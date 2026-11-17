@@ -1,0 +1,6 @@
+{
+  "name": "Chambers Gazette",
+  "description": "UK Law Rules Directory & Daily Legislation Updates for Legal Professionals",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
