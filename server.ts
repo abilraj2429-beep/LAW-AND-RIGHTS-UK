@@ -368,9 +368,9 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '')
     .slice(0, 80);
 }
-
+ const app = express();
 async function startServer(): Promise<void> {
-  const app = express();
+ 
   app.use(express.json({ limit: '1mb' }));
 
   // --- Auth Endpoints ---
@@ -660,7 +660,7 @@ async function startServer(): Promise<void> {
       appType: 'spa',
     });
     app.use(viteServer.middlewares);
-  } else {
+} else if (!process.env.VERCEL) {
     const distDir = path.resolve(process.cwd(), 'dist');
     app.use(express.static(distDir));
     app.get('*', (_req, res) => {
@@ -668,12 +668,18 @@ async function startServer(): Promise<void> {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Chambers Gazette server running on http://0.0.0.0:${PORT}`);
-  });
+  if (!process.env.VERCEL) {
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Chambers Gazette server running on http://0.0.0:${PORT}`);
+    });
+  }
 }
 
-startServer().catch((err) => {
+export const serverReady = startServer().catch((err) => {
   console.error('Failed to start Chambers Gazette server:', err);
-  process.exit(1);
+  if (!process.env.VERCEL) {
+    process.exit(1);
+  }
 });
+
+export default app;
