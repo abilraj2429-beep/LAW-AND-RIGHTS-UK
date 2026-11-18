@@ -21,8 +21,8 @@ const DATA_DIR = process.env.VERCEL
   : path.resolve(process.cwd(), 'data');
 const STORE_PATH = path.join(DATA_DIR, 'gazette-store.json');
 
-const AUTHOR_EMAIL = (process.env.AUTHOR_EMAIL || 'abilraj2429@gmail.com').trim().toLowerCase();
-const AUTHOR_PASSCODE = process.env.AUTHOR_PASSCODE || 'chambers-2026';
+const AUTHOR_EMAIL = (process.env.AUTHOR_EMAIL || '').trim().toLowerCase();
+const AUTHOR_PASSCODE = process.env.AUTHOR_PASSCODE || '';
 const SESSION_SECRET =
   process.env.SESSION_SECRET ||
   crypto.createHash('sha256').update(`chambers-gazette-${AUTHOR_EMAIL}`).digest('hex');
