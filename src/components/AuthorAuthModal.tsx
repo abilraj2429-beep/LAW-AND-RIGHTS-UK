@@ -10,7 +10,7 @@ interface AuthorAuthModalProps {
 }
 
 export function AuthorAuthModal({ open, onClose, onAuthenticated }: AuthorAuthModalProps) {
-  const [email, setEmail] = useState('abilraj2429@gmail.com');
+  const [email, setEmail] = useState('');
   const [passcode, setPasscode] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
