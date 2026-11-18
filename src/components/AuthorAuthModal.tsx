@@ -94,10 +94,7 @@ export function AuthorAuthModal({ open, onClose, onAuthenticated }: AuthorAuthMo
             />
           </div>
 
-          <p className="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-md px-3 py-2">
-            Preview author credentials: <span className="font-mono text-slate-700">abilraj2429@gmail.com</span>{' '}
-            with passcode <span className="font-mono text-slate-700">chambers-2026</span> (configurable via server environment).
-          </p>
+         
 
           {error && (
             <div
