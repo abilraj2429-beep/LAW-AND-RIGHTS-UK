@@ -16,7 +16,9 @@ import type {
 dotenv.config();
 
 const PORT = 3000;
-const DATA_DIR = path.resolve(process.cwd(), 'data');
+const DATA_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'data')
+  : path.resolve(process.cwd(), 'data');
 const STORE_PATH = path.join(DATA_DIR, 'gazette-store.json');
 
 const AUTHOR_EMAIL = (process.env.AUTHOR_EMAIL || 'abilraj2429@gmail.com').trim().toLowerCase();
